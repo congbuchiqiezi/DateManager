@@ -73,7 +73,8 @@ interface Food {
   createdAt: string
 }
 
-const { foods, add, remove } = useStorage()
+const store = useStorage()
+store.init()
 
 const newFood = ref<Partial<Food>>({
   name: '',
@@ -91,7 +92,7 @@ const addFood = () => {
     return
   }
 
-  add({
+  store.add({
     id: Date.now(),
     name: newFood.value.name,
     productionDate: newFood.value.productionDate,
@@ -131,14 +132,14 @@ const getStatusText = (food: Food): string => {
 }
 
 const expiringFoods = computed(() => {
-  return foods.value
+  return store.foods
     .map(food => ({ ...food, daysLeft: getDaysLeft(food) }))
     .filter(food => food.daysLeft <= 7)
     .sort((a, b) => a.daysLeft - b.daysLeft)
 })
 
 const sortedFoods = computed(() => {
-  return [...foods.value].sort((a, b) => {
+  return [...store.foods].sort((a, b) => {
     const aExpiry = new Date(getExpiryDate(a))
     const bExpiry = new Date(getExpiryDate(b))
     return aExpiry.getTime() - bExpiry.getTime()
@@ -151,7 +152,7 @@ const deleteFood = (id: number) => {
     content: '确定要删除这个食品记录吗？',
     success: (res) => {
       if (res.confirm) {
-        remove(id)
+        store.remove(id)
         uni.showToast({ title: '删除成功', icon: 'success' })
       }
     },
@@ -164,7 +165,7 @@ const consumeFood = (id: number) => {
     content: '确定已消耗这个食品吗？',
     success: (res) => {
       if (res.confirm) {
-        remove(id)
+        store.remove(id)
         uni.showToast({ title: '已标记为已消耗', icon: 'success' })
       }
     },

@@ -1,7 +1,5 @@
 <template>
   <view>
-    <u-index>
-    </u-index>
   </view>
 </template>
 
@@ -20,7 +18,3 @@ onHide(() => {
   console.log('App Hide')
 })
 </script>
-
-<style lang="scss">
-@import '@/uni.scss';
-</style>

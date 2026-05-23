@@ -20,8 +20,9 @@
     "@dcloudio/uni-automator": "3.0.0-4040520250104002",
     "@dcloudio/uni-cli-shared": "3.0.0-4040520250104002",
     "@dcloudio/vite-plugin-uni": "3.0.0-4040520250104002",
+    "sass-embedded": "^1.100.0",
     "typescript": "^5.5.4",
-    "vite": "^6.0.3",
+    "vite": "^5.2.8",
     "vue-tsc": "^2.1.10"
   }
 }

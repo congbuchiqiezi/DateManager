@@ -33,10 +33,9 @@ export const useStorage = defineStore('food', () => {
     save()
   }
 
-  init()
-
   return {
     foods,
+    init,
     add,
     remove,
   }
