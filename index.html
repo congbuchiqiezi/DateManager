@@ -1,72 +1,12 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DateManager - 食品日期管理</title>
-    <link rel="stylesheet" href="styles.css">
-</head>
-<body>
-    <div id="app">
-        <div class="container">
-            <header>
-                <h1>DateManager</h1>
-                <p class="subtitle">食品生产日期与保质期管理</p>
-            </header>
-
-            <section class="add-form">
-                <h2>添加食品</h2>
-                <form @submit.prevent="addFood">
-                    <div class="form-group">
-                        <label for="foodName">食品名称</label>
-                        <input type="text" id="foodName" v-model="newFood.name" required placeholder="例如：牛奶">
-                    </div>
-                    <div class="form-group">
-                        <label for="productionDate">生产日期</label>
-                        <input type="date" id="productionDate" v-model="newFood.productionDate" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="shelfLife">保质期（天）</label>
-                        <input type="number" id="shelfLight" v-model.number="newFood.shelfLife" required min="1" placeholder="例如：30">
-                    </div>
-                    <button type="submit">添加食品</button>
-                </form>
-            </section>
-
-            <section class="food-list">
-                <h2>食品列表</h2>
-                <div v-if="expiringFoods.length > 0" class="alert-section">
-                    <h3>临期提醒</h3>
-                    <div class="alert-list">
-                        <div v-for="food in expiringFoods" :key="food.id" class="alert-item">
-                            <span class="food-name">{{ food.name }}</span>
-                            <span class="days-left">{{ food.daysLeft <= 0 ? '已过期' : '剩余 ' + food.daysLeft + ' 天' }}</span>
-                        </div>
-                    </div>
-                </div>
-                <div v-if="foods.length === 0" class="empty-msg">暂无食品记录</div>
-                <div v-else class="food-list-content">
-                    <div v-for="food in sortedFoods" :key="food.id" class="food-item">
-                        <div class="food-info">
-                            <div class="name">
-                                {{ food.name }}
-                                <span :class="['status', getStatus(food)]">{{ getStatusText(food) }}</span>
-                            </div>
-                            <div class="date-info">
-                                生产日期：{{ food.productionDate }} | 保质期：{{ food.shelfLife }} 天 | 过期日期：{{ getExpiryDate(food) }}
-                            </div>
-                        </div>
-                        <div class="food-actions">
-                            <button class="btn-consume" @click="consumeFood(food.id)">已消耗</button>
-                            <button class="btn-delete" @click="deleteFood(food.id)">删除</button>
-                        </div>
-                    </div>
-                </div>
-            </section>
-        </div>
-    </div>
-
-    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
-    <script src="app.js"></script>
-</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>DateManager</title>
+  </head>
+  <body>
+    <div id="app"></div>
+    <script type="module" src="/src/main.ts"></script>
+  </body>
 </html>

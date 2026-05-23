@@ -1,0 +1,8 @@
+{
+  "name": "DateManager",
+  "appid": "",
+  "description": "食品生产日期与保质期管理应用",
+  "versionName": "1.0.0",
+  "versionCode": "100",
+  "transformPx": false
+}

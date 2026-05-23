@@ -11,9 +11,19 @@
 
 ## 技术栈
 
-- Vue 3 (Composition API)
--LocalStorage 本地存储
+- uni-app + Vue 3 + TypeScript
+- Pinia 状态管理
+- uni.getStorageSync 本地存储
 
-## 使用
+## 开发
 
-直接在浏览器中打开 `index.html` 即可使用。
+```bash
+# 安装依赖
+pnpm install
+
+# 开发
+pnpm dev:h5
+
+# 构建
+pnpm build:h5
+```
