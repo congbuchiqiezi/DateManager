@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DateManager - 食品日期管理</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>DateManager</h1>
+            <p class="subtitle">食品生产日期与保质期管理</p>
+        </header>
+
+        <section class="add-form">
+            <h2>添加食品</h2>
+            <form id="foodForm">
+                <div class="form-group">
+                    <label for="foodName">食品名称</label>
+                    <input type="text" id="foodName" required placeholder="例如：牛奶">
+                </div>
+                <div class="form-group">
+                    <label for="productionDate">生产日期</label>
+                    <input type="date" id="productionDate" required>
+                </div>
+                <div class="form-group">
+                    <label for="shelfLife">保质期（天）</label>
+                    <input type="number" id="shelfLife" required min="1" placeholder="例如：30">
+                </div>
+                <button type="submit">添加食品</button>
+            </form>
+        </section>
+
+        <section class="food-list">
+            <h2>食品列表</h2>
+            <div id="alertSection" class="alert-section" style="display: none;">
+                <h3>临期提醒</h3>
+                <div id="alertList" class="alert-list"></div>
+            </div>
+            <div id="foodList" class="food-list-content"></div>
+            <p id="emptyMsg" class="empty-msg" style="display: none;">暂无食品记录</p>
+        </section>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
